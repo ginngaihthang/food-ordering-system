@@ -1,33 +1,52 @@
-# food-ordering-system
-## 1.Project Overview 
-The restaurant food ordering system is a web-base food ordering application that allows restaurant customers to order food by scanning QR code.
-1.  **Dine-in** - Customers scan the QR code assigned to a restaurant table.
-2.  **Take-away - Customer scan a takeaway QR code and place order for pickup.
-  ## Tech Stack
-  
-  ### Backend
-  - Node.js
-  - Express.js
-  - TypeScript
-  - Prisma ORM
-  - PostgreSQL
-  - JWT
-  - bcrypt
-    #Installation
+# Restaurant QR Food Ordering System
 
-    - npm init -y
-    - npm install express cors dotenv bcrypt jsonwebtoken
-    - npm install @prisma/client
-    - npm install socket.io
-    - npm install -D typescript ts-node-dev
-    - npm install -D prisma
-    - npm install -D @types/node @types/express @types/cors
-    - npm install -D @types/bcrypt @types/jsonwebtoken
-    - npx tsc --init
-  
-  ### Frontend
-  - React
-  - TypeScript
-  - Tailwind CSS
-  - 
+A full-stack web application for QR-based restaurant ordering — dine-in and takeaway.
 
+## Tech Stack
+
+**Frontend:** React, TypeScript, Vite, React Router, Tailwind CSS, shadcn/ui
+**Backend:** Node.js, Express, TypeScript, Sequelize
+**Database:** PostgreSQL (via Docker)
+**Auth:** JWT, bcrypt
+**Real-time:** Socket.IO
+
+## Project Structure
+
+\`\`\`
+food-ordering-system/
+├── backend/       # Express API
+├── frontend/      # React app
+├── docker-compose.yml
+└── README.md
+\`\`\`
+
+## Quick Start
+
+### 1. Start the database
+\`\`\`bash
+docker compose up -d
+\`\`\`
+
+### 2. Set up and run the backend
+See [backend/SETUP.md](backend/SETUP.md)
+\`\`\`bash
+cd backend
+npm install
+npm run dev
+\`\`\`
+
+### 3. Set up and run the frontend
+See [frontend/SETUP.md](frontend/SETUP.md)
+\`\`\`bash
+cd frontend
+npm install
+npm run dev
+\`\`\`
+
+### 4. Open the app
+- Customer menu: `http://localhost:5173/menu?table=<qr_token>`
+- Admin dashboard: `http://localhost:5173/admin/login`
+
+## License
+
+Apache 2.0 — see [LICENSE](LICENSE)

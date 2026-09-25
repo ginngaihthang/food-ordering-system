@@ -1,0 +1,8 @@
+# OS files
+.DS_Store
+Thumbs.db
+# Docker volumes (if any local bind mounts are used)
+# pgdata/  <- only needed if you're bind-mounting a folder instead of a named volume
+
+# Root-level env (if you ever add one)
+.env
