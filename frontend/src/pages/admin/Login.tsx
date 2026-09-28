@@ -21,15 +21,13 @@ export default function AdminLogin() {
     setLoading(true);
 
     try {
-     console.log('Submitting login for:', email);
 
     const res = await apiClient.post('/api/auth/login', {
       email,
       password,
     });
 
-    console.log('Login response:', res.data);
-    console.log('Token from backend:', res.data.token);
+  
 
     login(res.data.token, res.data.user);
 

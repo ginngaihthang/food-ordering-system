@@ -23,7 +23,7 @@ export default function AdminLayout() {
     return (
         <div className="min-h-screen flex bg-muted/20">
         {/* Sidebar */}
-        <aside className="w-64 border-r bg-background flex flex-col">
+        <aside className="hidden md:flex w-64 border-r bg-background flex-col shrink-0">
             <div className="p-6">
             <h1 className="text-lg font-semibold">Restaurant Admin</h1>
             <p className="text-sm text-muted-foreground">{user?.username}</p>
@@ -57,7 +57,7 @@ export default function AdminLayout() {
         </aside>
 
         {/* Main content */}
-        <main className="flex-1 p-8">
+        <main className="flex-1 p-8 overflow-y-auto min-w-0">
             <Outlet />
         </main>
         </div>
