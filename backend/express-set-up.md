@@ -13,12 +13,15 @@ npm init -y
 
 \`\`\`bash
 npm install express sequelize pg pg-hstore bcrypt jsonwebtoken socket.io cors dotenv cookie-parser
+npm install cloudinary multer-storage-cloudinary multer
+
 \`\`\`
 
 ## 3. Install Dev Dependencies
 
 \`\`\`bash
 npm install -D typescript@^5.7.0 tsx @types/node @types/express @types/bcrypt @types/jsonwebtoken @types/cors @types/cookie-parser
+npm install -D @types/multer
 \`\`\`
 
 > Note: `ts-node-dev` was removed due to compatibility issues with newer TypeScript/Node versions. `tsx` replaced it.

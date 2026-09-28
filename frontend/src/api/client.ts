@@ -8,10 +8,7 @@ export const apiClient = axios.create({
 })
 
 apiClient.interceptors.request.use((config) => {
-    console.log(import.meta.env.VITE_API_URL)
-    console.log(config)
     const token = localStorage.getItem('admin_token');
-    console.log('Interceptor running, token:', token);
     if(token) {
         config.headers.set('Authorization', `Bearer ${token}`);
     }
