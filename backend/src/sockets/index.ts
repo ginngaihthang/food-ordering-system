@@ -10,7 +10,6 @@ export function initSocket(server: http.Server): Server {
     })
 
     io.on('conection', (socket) => {
-        console.log("Client connected:' socket.id")
 
         socket.on('join_admin_rome', () => {
             socket.join('admin_room');

@@ -1,5 +1,6 @@
 import type { Request, Response } from 'express';
 import { Product, Category } from '../models/index.js';
+import { deleteCloudinaryImage } from '../utils/cloudinaryHelpers.js';
 
 export async function getProducts(_req: Request, res: Response): Promise<void> {
   const products = await Product.findAll({
@@ -57,6 +58,10 @@ export async function updateProduct(req: Request, res: Response): Promise<void> 
   if (!product) {
     res.status(404).json({ message: 'Product not found' });
     return;
+  }
+
+   if (imageUrl !== undefined && imageUrl !== product.imageUrl && product.imageUrl) {
+    await deleteCloudinaryImage(product.imageUrl);
   }
 
   if (categoryId !== undefined) product.categoryId = categoryId;

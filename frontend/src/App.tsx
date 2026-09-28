@@ -4,13 +4,14 @@ import RequireAuth from "./components/admin/RequireAuth"
 import AdminLayout from "./components/admin/AdminLayout"
 import Dashboard from "./pages/admin/Dashboard"
 import RequireGuest from "./components/admin/ReauireGuest"
+import Products from "./pages/admin/Products"
 
 function App() { 
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Navigate to="/admin/login" replace />} />
-        <Route path="/admin/login" element={<RequireGuest> AdminLogin</RequireGuest> }/>
+        <Route path="/admin/login" element={<RequireGuest> <AdminLogin/></RequireGuest> }/>
         <Route 
           path="/admin"
           element= {
@@ -20,6 +21,7 @@ function App() {
           }
         >
           <Route path="/admin/dashboard" element={<Dashboard />} />
+          <Route path="/admin/products" element={<Products />} />
         </Route>
          {/* <Route path="dashboard" element={<Dashboard />} /> */}
       </Routes>
