@@ -47,7 +47,11 @@ export function ProductForm({
           }
         >
           <SelectTrigger>
-            <SelectValue placeholder="Select category" />
+            <SelectValue placeholder="Select category">
+              {categories.find(
+                (cat) => cat.id === form.categoryId
+              )?.name || "Select category"}
+            </SelectValue>
           </SelectTrigger>
 
           <SelectContent>

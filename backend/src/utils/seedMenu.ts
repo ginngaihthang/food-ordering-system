@@ -6,9 +6,9 @@ import { sequelize, Category, Product } from '../models/index.js';
 async function seed() {
   await sequelize.authenticate();
 
-  const mainCourse = await Category.create({ name: 'Main Course' });
-  const drinks = await Category.create({ name: 'Drinks' });
-  const desserts = await Category.create({ name: 'Desserts' });
+  const mainCourse = await Category.create({ name: 'Main Course' , isActive: true });
+  const drinks = await Category.create({ name: 'Drinks', isActive: true  });
+  const desserts = await Category.create({ name: 'Desserts', isActive: true  });
 
   await Product.create({
     categoryId: mainCourse.id,
