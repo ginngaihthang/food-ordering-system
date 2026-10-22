@@ -3,11 +3,11 @@ import { Server } from 'socket.io';
 import { verifyToken } from '../utils/jwt.js';
 import { ORDER_TOKEN_PATTERN } from '../utils/orderToken.js';
 import { User, Order, RestaurantTable, TableSession } from '../models/index.js';
+import { allowedOrigins } from '../app.js';
 
 const TABLE_TOKEN_PATTERN = /^[a-zA-Z0-9]{6,64}$/;
 
 let io: Server | null = null;
-const allowed = [process.env.CLIENT_URL!, "http://localhost:5173"];
 function readString(payload: unknown, key: string): string | null {
   if (typeof payload !== 'object' || payload === null) return null;
   const value = (payload as Record<string, unknown>)[key];
@@ -17,7 +17,7 @@ function readString(payload: unknown, key: string): string | null {
 export function initSocket(httpServer: HttpServer): Server {
   io = new Server(httpServer, {
     cors: {
-      origin: allowed,
+      origin: allowedOrigins,
       credentials: true,
     },
   });
