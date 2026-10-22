@@ -12,8 +12,8 @@ const router = Router();
 
 router.get('/', getProducts);
 router.post('/', requiredAuth, requireRole('ADMIN', 'STAFF'), createProduct);
-router.put('/:id', requiredAuth, requireRole('ADMIN', 'STAFF'), updateProduct);
+router.put('/:id', requiredAuth, requireRole('ADMIN'), updateProduct);
 router.patch('/:id/availability', requiredAuth, requireRole('ADMIN', 'STAFF'), toggleAvailability);
-router.delete('/:id', requiredAuth, requireRole('ADMIN', 'STAFF'), deleteProduct);
+router.delete('/:id', requiredAuth, requireRole('ADMIN'), deleteProduct);
 
 export default router;

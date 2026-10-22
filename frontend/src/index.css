@@ -20,6 +20,7 @@
   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
   --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
@@ -119,13 +120,13 @@
 #root {
   width:100%;
   margin: 0 auto;
-  text-align: center;
+  /* text-align: center; */
   border-inline: 1px solid var(--border);
   min-height: 100svh;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  padding-inline: 1rem;
+  /* padding-inline: 1rem; */
 }
 
 body {
@@ -134,7 +135,7 @@ body {
 
 h1,
 h2 {
-  font-family: var(--heading);
+  font-family: var(--font);
   font-weight: 500;
   color: var(--text-h);
 }
@@ -142,10 +143,8 @@ h2 {
 h1 {
   font-size: 56px;
   letter-spacing: -1.68px;
-  margin: 32px 0;
   @media (max-width: 1024px) {
     font-size: 36px;
-    margin: 20px 0;
   }
 }
 h2 {
@@ -174,6 +173,18 @@ code {
   line-height: 135%;
   padding: 4px 8px;
   background: var(--code-bg);
+}
+html, body {
+  /* overflow-x: hidden; */
+  overflow-x: clip;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 @theme inline {
@@ -252,6 +263,8 @@ code {
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
 }
+
+
 
 @layer base {
   * {

@@ -5,4 +5,4 @@ Thumbs.db
 # pgdata/  <- only needed if you're bind-mounting a folder instead of a named volume
 
 # Root-level env (if you ever add one)
-.env
+.envbackups/

@@ -9,6 +9,8 @@ interface UserAttributes {
   email: string;
   password: string;
   role: UserRole;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 type UserCreationAttributes = Optional<UserAttributes, 'id' | 'role'>;
@@ -22,6 +24,8 @@ export class User
   declare email: string;
   declare password: string;
   declare role: UserRole;
+  declare createdAt: Date;
+  declare updatedAt: Date;
 }
 
 User.init(
@@ -32,7 +36,7 @@ User.init(
     password: { type: DataTypes.STRING, allowNull: false },
     role: {
       type: DataTypes.ENUM('ADMIN', 'STAFF', 'CUSTOMER'),
-      defaultValue: 'ADMIN',
+      defaultValue: 'STAFF',
     },
   },
   { sequelize, tableName: 'users', timestamps: true, underscored: true }

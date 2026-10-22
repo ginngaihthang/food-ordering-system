@@ -6,6 +6,8 @@ import { RestaurantTable } from './Table.js';
 import { TableSession } from './TableSession.js';
 import { Order } from './Order.js';
 import { OrderItem } from './OrderItem.js';
+import { Setting } from './Setting.js';
+import { Checkout } from './Checkout.js';
 
 // Category <-> Product
 Category.hasMany(Product, { foreignKey: 'categoryId' });
@@ -36,4 +38,7 @@ export {
   TableSession,
   Order,
   OrderItem,
+  Setting,
+  Checkout
+
 };
