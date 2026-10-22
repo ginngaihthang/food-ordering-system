@@ -17,7 +17,8 @@ import { stripeWebhook } from './controllers/webhookController.js';
 // CHANGED: always a string[], never undefined. Also exported for Socket.IO.
 export const allowedOrigins = (process.env.CLIENT_URL ?? 'http://localhost:5173')
   .split(',')
-  .map((url) => url.trim());
+  .map((url) => url.trim().replace(/\/$/, ''))
+  .filter(Boolean);
 
 const app = express();
 
