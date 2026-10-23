@@ -31,6 +31,11 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
       .finally(() => setLoading(false));
   }, []);
 
+  // NEW: show the restaurant name in the browser tab
+  useEffect(() => {
+    if (settings.restaurantName) document.title = settings.restaurantName;
+  }, [settings.restaurantName]);
+
   const updateSettings = useCallback(async (patch: Partial<Settings>) => {
     setSettings(await saveSettings(patch));
   }, []);
