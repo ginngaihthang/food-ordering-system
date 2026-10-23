@@ -176,8 +176,8 @@ code {
 }
 html, body {
   /* overflow-x: hidden; */
+  width: 100%;
   overflow-x: clip;
-  touch-action: manipulation;
 }
 
 .no-scrollbar::-webkit-scrollbar {
