@@ -271,7 +271,7 @@ export default function Menu() {
         ) : (
           filteredCategories.map((category) => (
             <section key={category.id} className="space-y-3 w-full">
-              <h2 className="font-display text-lg sm:text-3xl font-bold tracking-tight">
+              <h2 className="font-display text-lg sm:text-3xl font-bold tracking-tight text-[#2b1a12] dark:text-[#fff6e8]">
                 {category.name}
               </h2>
 
@@ -309,7 +309,7 @@ export default function Menu() {
                     {/* Details */}
                     <div className="flex min-w-0 flex-1 items-center justify-between gap-2 sm:items-end sm:p-4">
                       <div className="min-w-0">
-                        <h3 className="text-sm sm:text-base font-bold leading-tight line-clamp-2">{product.name}</h3>
+                        <h3 className="text-sm sm:text-base font-bold leading-tight line-clamp-2 text-card-foreground">{product.name}</h3>
                         {product.description && (
                           <p className="mt-0.5 text-xs text-muted-foreground line-clamp-1">
                             {product.description}
