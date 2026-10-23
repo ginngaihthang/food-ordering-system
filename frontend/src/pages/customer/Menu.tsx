@@ -32,11 +32,14 @@ function gradientFor(id: string | number) {
 
 const BRAND = 'bg-gradient-to-br from-[#e8432d] to-[#ff8a3d]';
 
+// Fixed colours so the menu looks the same in light and dark mode
+const PAGE = 'bg-[#fff6e8] text-[#2b1a12]';
+
 function chipClass(active: boolean) {
   return `px-3 py-1.5 sm:px-4 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap shrink-0 transition active:scale-95 ${
     active
       ? `${BRAND} text-white shadow-[0_6px_16px_rgba(232,67,45,0.35)]`
-      : 'bg-card text-foreground shadow-sm hover:bg-card/80'
+      : 'bg-white text-[#2b1a12] shadow-sm hover:bg-white/80'
   }`;
 }
 
@@ -119,7 +122,7 @@ export default function Menu() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#fff6e8] dark:bg-[#1b110c]">
+      <div className={`min-h-screen ${PAGE}`}>
         <div className="w-full max-w-6xl mx-auto p-4 space-y-4 overflow-x-hidden">
           <Skeleton className="h-44 w-full rounded-[28px]" />
           <Skeleton className="h-12 w-full rounded-full" />
@@ -135,18 +138,18 @@ export default function Menu() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-[#fff6e8] dark:bg-[#1b110c]">
+      <div className={`min-h-screen ${PAGE}`}>
         <div className="w-full max-w-md mx-auto p-8 text-center space-y-2 overflow-x-hidden">
           <p className="text-5xl">🍽️</p>
           <p className="font-display text-2xl font-bold">Unable to load menu</p>
-          <p className="text-muted-foreground">{error}</p>
+          <p className="text-[#2b1a12]/60">{error}</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[#fff6e8] dark:bg-[#1b110c]">
+    <div className={`min-h-screen ${PAGE}`}>
       <div className="w-full max-w-6xl mx-auto p-4 sm:p-6 pb-24 sm:pb-28 space-y-4 sm:space-y-5 overflow-x-hidden box-border">
         {/* Hero header */}
         <section className="relative overflow-hidden rounded-[28px] bg-gradient-to-br from-[#e8432d] via-[#ff8a3d] to-[#ffb627] px-4 pb-10 pt-4 text-white sm:px-8 sm:pb-16 sm:pt-7">
@@ -185,7 +188,6 @@ export default function Menu() {
         </section>
 
         {/* Search (overlaps the hero) */}
-                {/* Search (overlaps the hero) */}
         <div className="relative z-10 -mt-8 mx-3 sm:-mt-12 sm:mx-8 w-auto">
           <Search className="absolute left-4 sm:left-5 top-1/2 -translate-y-1/2 h-4 w-4 sm:h-5 sm:w-5 text-[#e8432d]" />
           <Input
@@ -194,7 +196,7 @@ export default function Menu() {
             placeholder="Search dishes, e.g. chicken, spicy..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="pl-10 pr-12 sm:pl-12 sm:pr-14 h-11 sm:h-14 text-sm sm:text-base rounded-full w-full border-0 bg-card shadow-[0_8px_24px_rgba(140,70,20,0.15)] focus-visible:ring-2 focus-visible:ring-[#e8432d] [&::-webkit-search-cancel-button]:hidden [&::-webkit-search-decoration]:hidden"
+            className="pl-10 pr-12 sm:pl-12 sm:pr-14 h-11 sm:h-14 text-base rounded-full w-full border-0 bg-white text-[#2b1a12] placeholder:text-[#2b1a12]/50 shadow-[0_8px_24px_rgba(140,70,20,0.15)] focus-visible:ring-2 focus-visible:ring-[#e8432d] [&::-webkit-search-cancel-button]:hidden [&::-webkit-search-decoration]:hidden"
           />
           {search && (
             <button
@@ -204,7 +206,7 @@ export default function Menu() {
                 searchInputRef.current?.focus();
               }}
               aria-label="Clear search"
-              className="absolute right-2 sm:right-3 top-1/2 grid h-8 w-8 sm:h-10 sm:w-10 -translate-y-1/2 place-items-center rounded-full bg-foreground/10 text-foreground/70 transition hover:bg-foreground/15 active:scale-90"
+              className="absolute right-2 sm:right-3 top-1/2 grid h-8 w-8 sm:h-10 sm:w-10 -translate-y-1/2 place-items-center rounded-full bg-[#2b1a12]/10 text-[#2b1a12]/70 transition hover:bg-[#2b1a12]/15 active:scale-90"
             >
               <X className="h-4 w-4 sm:h-5 sm:w-5" />
             </button>
@@ -232,7 +234,7 @@ export default function Menu() {
               {cat.name}
             </button>
           ))}
-          <span className="h-6 w-px shrink-0 bg-foreground/15" />
+          <span className="h-6 w-px shrink-0 bg-[#2b1a12]/15" />
           <button onClick={() => setUnderFive((v) => !v)} className={chipClass(underFive)}>
             💸 Under {settings.currencySymbol}5
           </button>
@@ -240,12 +242,12 @@ export default function Menu() {
 
         {/* Quick search suggestions */}
         <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1 -mx-4 px-4">
-          <span className="text-xs sm:text-sm text-muted-foreground shrink-0">Try:</span>
+          <span className="text-xs sm:text-sm text-[#2b1a12]/60 shrink-0">Try:</span>
           {QUICK_SEARCHES.map((term) => (
             <button
               key={term}
               onClick={() => setSearch(term)}
-              className="px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full border border-foreground/10 bg-card/70 text-xs sm:text-sm whitespace-nowrap shrink-0 transition hover:bg-card active:scale-95"
+              className="px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full border border-[#2b1a12]/10 bg-white/70 text-[#2b1a12] text-xs sm:text-sm whitespace-nowrap shrink-0 transition hover:bg-white active:scale-95"
             >
               {term}
             </button>
@@ -253,14 +255,14 @@ export default function Menu() {
         </div>
 
         {hasActiveFilters && (
-          <p className="text-sm text-muted-foreground">{totalDishCount} dishes</p>
+          <p className="text-sm text-[#2b1a12]/60">{totalDishCount} dishes</p>
         )}
 
         {totalDishCount === 0 ? (
           <div className="text-center py-16 space-y-3">
             <p className="text-5xl">🍽️</p>
             <p className="font-display text-2xl font-bold">Nothing found</p>
-            <p className="text-muted-foreground">No dishes match these filters.</p>
+            <p className="text-[#2b1a12]/60">No dishes match these filters.</p>
             <button
               onClick={clearFilters}
               className={`mt-2 px-6 py-3 rounded-full ${BRAND} text-white text-sm font-bold shadow-[0_8px_18px_rgba(232,67,45,0.35)] active:scale-95`}
@@ -271,7 +273,7 @@ export default function Menu() {
         ) : (
           filteredCategories.map((category) => (
             <section key={category.id} className="space-y-3 w-full">
-              <h2 className="font-display text-lg sm:text-3xl font-bold tracking-tight text-[#2b1a12] dark:text-[#fff6e8]">
+              <h2 className="font-display text-lg sm:text-3xl font-bold tracking-tight text-[#2b1a12]">
                 {category.name}
               </h2>
 
@@ -279,7 +281,7 @@ export default function Menu() {
                 {category.Products.map((product) => (
                   <div
                     key={product.id}
-                    className={`group relative flex flex-row items-center gap-3 p-2 sm:flex-col sm:items-stretch sm:gap-0 sm:p-0 overflow-hidden rounded-3xl bg-card shadow-[0_8px_24px_rgba(140,70,20,0.12)] transition duration-200 hover:-translate-y-0.5 ${
+                    className={`group relative flex flex-row items-center gap-3 p-2 sm:flex-col sm:items-stretch sm:gap-0 sm:p-0 overflow-hidden rounded-3xl bg-white shadow-[0_8px_24px_rgba(140,70,20,0.12)] transition duration-200 hover:-translate-y-0.5 ${
                       !product.isAvailable ? 'opacity-50' : ''
                     }`}
                   >
@@ -309,9 +311,11 @@ export default function Menu() {
                     {/* Details */}
                     <div className="flex min-w-0 flex-1 items-center justify-between gap-2 sm:items-end sm:p-4">
                       <div className="min-w-0">
-                        <h3 className="text-sm sm:text-base font-bold leading-tight line-clamp-2 text-card-foreground">{product.name}</h3>
+                        <h3 className="text-sm sm:text-base font-bold leading-tight line-clamp-2 text-[#2b1a12]">
+                          {product.name}
+                        </h3>
                         {product.description && (
-                          <p className="mt-0.5 text-xs text-muted-foreground line-clamp-1">
+                          <p className="mt-0.5 text-xs text-[#2b1a12]/60 line-clamp-1">
                             {product.description}
                           </p>
                         )}
@@ -341,7 +345,7 @@ export default function Menu() {
         )}
 
         {totalItems > 0 && (
-          <div className="fixed bottom-0 left-0 right-0 bg-gradient-to-t from-[#fff6e8] via-[#fff6e8]/90 to-transparent dark:from-[#1b110c] dark:via-[#1b110c]/90 p-3 sm:p-4 w-full box-border">
+          <div className="fixed bottom-0 left-0 right-0 bg-gradient-to-t from-[#fff6e8] via-[#fff6e8]/90 to-transparent p-3 sm:p-4 w-full box-border">
             <div className="max-w-2xl mx-auto">
               <button
                 onClick={() => navigate(tableToken ? `/cart?table=${tableToken}` : '/cart')}
